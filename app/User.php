@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Model\Category;
+use App\Model\Like;
+use App\Model\Question;
 
 class User extends Authenticatable
 {
@@ -27,6 +30,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+    public function question() 
+    {
+        return $this->belongsTo(Question::class);
+    }
 
     /**
      * The attributes that should be cast to native types.
